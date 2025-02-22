@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Calculator</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .calculator {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 250px;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        font-size: 18px;
+        text-align: right;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+        border-radius: 4px;
+      }
+
+      button {
+        width: 60px;
+        height: 60px;
+        margin: 5px;
+        font-size: 18px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .button-row {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .equal {
+        background-color: #2196f3;
+      }
+
+      .equal:hover {
+        background-color: #1976d2;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculator">
+      <input type="text" id="display" disabled />
+      <div class="button-row">
+        <button class="num" data-value="7">7</button>
+        <button class="num" data-value="8">8</button>
+        <button class="num" data-value="9">9</button>
+        <button class="operator" data-value="+">+</button>
+      </div>
+      <div class="button-row">
+        <button class="num" data-value="4">4</button>
+        <button class="num" data-value="5">5</button>
+        <button class="num" data-value="6">6</button>
+        <button class="operator" data-value="-">-</button>
+      </div>
+      <div class="button-row">
+        <button class="num" data-value="1">1</button>
+        <button class="num" data-value="2">2</button>
+        <button class="num" data-value="3">3</button>
+        <button class="operator" data-value="*">*</button>
+      </div>
+      <div class="button-row">
+        <button class="num" data-value="0">0</button>
+        <button id="clear">C</button>
+        <button id="equal" class="equal">=</button>
+        <button class="operator" data-value="/">/</button>
+      </div>
+    </div>
+
+    <script>
+      let currentInput = "";
+      let previousInput = "";
+      let operator = null;
+
+      function calculateResult() {
+        let result;
+        const prev = parseFloat(previousInput);
+        const current = parseFloat(currentInput);
+
+        if (isNaN(prev) || isNaN(current)) return;
+
+        switch (operator) {
+          case "+":
+            result = prev + current;
+            break;
+          case "-":
+            result = prev - current;
+            break;
+          case "*":
+            result = prev * current;
+            break;
+          case "/":
+            if (current === 0) {
+              result = "Error";
+            } else {
+              result = prev / current;
+            }
+            break;
+          default:
+            return;
+        }
+
+        $("#display").val(result);
+        currentInput = result;
+        operator = null;
+        previousInput = "";
+      }
+
+      $(".num").click(function () {
+        currentInput += $(this).data("value");
+        $("#display").val(currentInput);
+      });
+
+      $(".operator").click(function () {
+        if (currentInput === "") return;
+        if (previousInput !== "") {
+          calculateResult();
+        }
+        operator = $(this).data("value");
+        previousInput = currentInput;
+        currentInput = "";
+      });
+
+      $("#clear").click(function () {
+        currentInput = "";
+        previousInput = "";
+        operator = null;
+        $("#display").val("");
+      });
+
+      $("#equal").click(function () {
+        calculateResult();
+      });
+    </script>
+  </body>
+</html>

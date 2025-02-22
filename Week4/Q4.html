@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Produce Bill</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background-color: #f4f4f4;
+      }
+      select,
+      input,
+      button {
+        padding: 10px;
+        margin: 10px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+      }
+      button {
+        background-color: #4caf50;
+        color: white;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Product Bill</h2>
+    <label for="brand">Choose a brand:</label>
+    <select id="brand">
+      <option value="HP">HP</option>
+      <option value="Nokia">Nokia</option>
+      <option value="Samsung">Samsung</option>
+      <option value="Motorola">Motorola</option>
+      <option value="Apple">Apple</option>
+    </select>
+    <br />
+
+    <label><input type="checkbox" id="mobile" /> Mobile</label>
+    <label><input type="checkbox" id="laptop" /> Laptop</label>
+    <br />
+
+    <label for="quantity1">Enter mobile quantity:</label>
+    <input type="number" id="quantity1" min="1" />
+    <br />
+    <label for="quantity2">Enter laptop quantity:</label>
+    <input type="number" id="quantity2" min="1" />
+    <br />
+
+    <button id="produceBill">Produce Bill</button>
+
+    <script>
+      $(document).ready(function () {
+        $("#produceBill").click(function () {
+          var brand = $("#brand").val();
+          var quantity1 = parseInt($("#quantity1").val()) || 0;
+          var quantity2 = parseInt($("#quantity2").val()) || 0;
+          var totalAmount = 0;
+
+          if ($("#mobile").is(":checked")) {
+            totalAmount += 10000 * quantity1;
+          }
+          if ($("#laptop").is(":checked")) {
+            totalAmount += 30000 * quantity2;
+          }
+
+          alert("Total Bill Amount: " + totalAmount);
+        });
+      });
+    </script>
+  </body>
+</html>

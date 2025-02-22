@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Birthday Card Maker</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      body {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+      }
+
+      .maker {
+        width: 45%;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .card {
+        width: 45%;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: none; /* Initially hide the card preview */
+        text-align: center;
+      }
+
+      .card img {
+        width: 100px;
+        height: auto;
+        margin-top: 10px;
+      }
+
+      input[type="number"],
+      textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 16px;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="maker">
+      <h2>Birthday Card Maker</h2>
+
+      <label for="background">Choose a background color:</label>
+      <select name="background" id="background">
+        <option value="yellow">Yellow</option>
+        <option value="red">Red</option>
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+      </select>
+      <br />
+
+      <label for="font">Choose a font:</label>
+      <select name="font" id="font">
+        <option value="Verdana">Verdana</option>
+        <option value="Arial">Arial</option>
+        <option value="Cambria">Cambria</option>
+        <option value="Georgia">Georgia</option>
+      </select>
+      <br />
+
+      <label for="size">Enter a number for font size:</label>
+      <input type="number" id="size" name="font size" min="10" max="50" />
+      <br />
+
+      <label for="border">Choose border style:</label>
+      <label> <input type="radio" name="border" value="None" />None</label>
+      <label> <input type="radio" name="border" value="Double" />Double</label>
+      <label> <input type="radio" name="border" value="Solid" />Solid</label>
+      <br />
+
+      <label>
+        <input type="checkbox" name="default" id="default" /> Add the default
+        picture?
+      </label>
+      <br />
+
+      <label> Enter the greeting text below: </label>
+      <textarea id="greeting" name="greeting"></textarea>
+      <br />
+
+      <button id="createCard">Create Birthday Card</button>
+    </div>
+
+    <div id="cardPreview" class="card">
+      <h2 id="cardTitle">Happy Birthday!</h2>
+      <img
+        id="cardImage"
+        src="cake.png"
+        alt="Birthday Image"
+        style="display: none"
+      />
+      <p id="cardText"></p>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        $("#createCard").click(function () {
+          const backgroundColor = $("#background").val();
+          const font = $("#font").val();
+          const fontSize = $("#size").val() || 20;
+          const border = $('input[name="border"]:checked').val();
+          const greetingText = $("#greeting").val();
+          const addDefaultImage = $("#default").is(":checked");
+
+          $("#cardPreview").css("background-color", backgroundColor);
+          $("#cardPreview").css("font-family", font);
+          $("#cardPreview").css("font-size", fontSize + "px");
+          $("#cardPreview").css(
+            "border",
+            border ? `${border} 5px solid` : "none"
+          );
+          $("#cardText").text(greetingText);
+
+          if (addDefaultImage) {
+            $("#cardImage").attr("src", "cake.png").show();
+          } else {
+            $("#cardImage").hide();
+          }
+
+          $("#cardPreview").show();
+        });
+      });
+    </script>
+  </body>
+</html>
