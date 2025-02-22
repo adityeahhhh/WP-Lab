@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Magazine Cover Page</title>
+
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+      .container {
+        margin-top: 30px;
+        padding-bottom: 30px;
+      }
+
+      .bottom-section {
+        margin-top: 30px;
+      }
+
+      .bottom-part {
+        margin-bottom: 20px;
+      }
+
+      .badge-section {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body style="background-color: rgb(221, 247, 224)">
+    <div class="container" style="background-color: rgb(174, 247, 222)">
+      <div class="row">
+        <div class="col-md-12">
+          <h1
+            style="
+              font-family: 'Times New Roman', Times, serif;
+              font-size: 100px;
+              padding: 40px;
+              text-align: center;
+            "
+          >
+            Magazine Cover
+          </h1>
+
+          <div class="input-group input-group-lg">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search for magazine editions"
+            />
+            <span class="input-group-btn">
+              <button class="btn btn-primary" type="button">Search</button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="container bottom-section"
+      style="
+        border: 20px;
+        border-color: black;
+        background-color: rgb(182, 255, 200);
+      "
+    >
+      <h2
+        style="
+          font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+            'Lucida Sans', Arial, sans-serif;
+        "
+      >
+        Welcome to our Magazine
+      </h2>
+
+      <div
+        class="row bottom-part"
+        style="padding: 10px; background-color: rgb(144, 255, 168)"
+      >
+        <div class="col-md-4">
+          <h3>Search editors</h3>
+          <span class="badge badge-info">New</span>
+          <div class="input-group">
+            <span class="input-group-addon">@</span>
+            <input type="text" class="form-control" placeholder="Username" />
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="row bottom-part"
+        style="padding: 10px; background-color: rgb(144, 255, 168)"
+      >
+        <div class="col-md-4">
+          <h3>Current Edition</h3>
+
+          <div class="btn-group" role="group" aria-label="Button group">
+            <button type="button" class="btn btn-success">Save</button>
+            <button type="button" class="btn btn-warning">Edit</button>
+            <button type="button" class="btn btn-danger">Delete</button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="row bottom-part"
+        style="padding: 10px; background-color: rgb(144, 255, 168)"
+      >
+        <div class="col-md-4">
+          <h3>Apply Category</h3>
+
+          <div class="input-group">
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-menu-hamburger"></span>
+            </span>
+            <select class="form-control">
+              <option>Category 1</option>
+              <option>Category 2</option>
+              <option>Category 3</option>
+            </select>
+          </div>
+          <button type="button" class="btn btn-info btn-lg">Apply</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

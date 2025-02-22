@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Student Bio-data Form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Student Bio-Data Form</h2>
+      <form action="#" method="POST">
+        <table>
+          <tr>
+            <td><label for="full-name">Full Name:</label></td>
+            <td>
+              <input
+                type="text"
+                id="full-name"
+                name="full-name"
+                placeholder="Enter full name"
+                required
+              />
+            </td>
+          </tr>
+          <tr>
+            <td><label for="email">Email:</label></td>
+            <td>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+              />
+            </td>
+          </tr>
+          <tr>
+            <td><label for="dob">Date of Birth:</label></td>
+            <td><input type="date" id="dob" name="dob" required /></td>
+          </tr>
+
+          <tr>
+            <td>Gender:</td>
+            <td>
+              <label>
+                <input type="radio" name="gender" value="male" required /> Male
+              </label>
+              <label>
+                <input type="radio" name="gender" value="female" required />
+                Female
+              </label>
+              <label>
+                <input type="radio" name="gender" value="other" required />
+                Other
+              </label>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Subjects:</td>
+            <td>
+              <label>
+                <input type="checkbox" name="subject" value="WP" /> WP
+              </label>
+              <label>
+                <input type="checkbox" name="subject" value="PCAP" /> PCAP
+              </label>
+              <label>
+                <input type="checkbox" name="subject" value="DL" /> DL
+              </label>
+            </td>
+          </tr>
+
+          <tr>
+            <td><label for="address">Address:</label></td>
+            <td>
+              <textarea
+                id="address"
+                name="address"
+                placeholder="Enter your address"
+                required
+              ></textarea>
+            </td>
+          </tr>
+        </table>
+
+        <div class="submit-btn">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
