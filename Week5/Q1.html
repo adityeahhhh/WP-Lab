@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Student Bio-data Form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <script type="text/javascript">
+      function calcmarks(event) {
+        event.preventDefault();
+        
+
+        var wpMarks = parseFloat(document.getElementById("WP").value);
+        var pcapMarks = parseFloat(document.getElementById("PCAP").value);
+        var dlMarks = parseFloat(document.getElementById("DL").value);
+
+        if (isNaN(wpMarks) || isNaN(pcapMarks) || isNaN(dlMarks)) {
+          alert("Please enter valid marks for all subjects.");
+          return;
+        }
+
+        var total = wpMarks + pcapMarks + dlMarks;
+        var aver = total / 3;
+
+        document.getElementById("marks").innerHTML = "Student Marks Percentage: " + aver.toFixed(2) + "%";
+      }
+      function goToTestPage() {
+        window.location.href = "test.html"; // Redirects to test.html
+      }
+    </script>
+
+    <div class="container">
+      <h2>Student Marks Calculator</h2>
+      <form action="#" method="" onsubmit="calcmarks(event)">
+        <table>
+          <tr>
+            <td><label for="full-name">Full Name:</label></td>
+            <td>
+              <input
+                type="text"
+                id="full-name"
+                name="full-name"
+                placeholder="Enter full name"
+                required
+              />
+            </td>
+          </tr>
+          <tr>
+            <td><label for="email">Email:</label></td>
+            <td>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter student's email"
+                required
+              />
+            </td>
+          </tr>
+          <tr>
+            <td><label for="phnnumber">Contact Number:</label></td>
+            <td>
+              <input
+                type="number"
+                id="phnnumber"
+                name="phnnumber"
+                placeholder="Enter student's phone number"
+                required
+              />
+            </td>
+          </tr>
+          <tr>
+            <td><label for="dob">Date of Birth:</label></td>
+            <td><input type="date" id="dob" name="dob" required /></td>
+          </tr>
+
+          <tr>
+            <td>Subject Marks:</td>
+            <td>
+              <label>WP
+                <input type="number" id="WP" /> 
+              </label>
+              <label>PCAP
+                <input type="number" id="PCAP" /> 
+              </label>
+              <label>DL
+                <input type="number" id="DL" /> 
+              </label>
+            </td>
+          </tr>
+
+          <tr>
+            <td><label for="address">Address:</label></td>
+            <td>
+              <textarea
+                id="address"
+                name="address"
+                placeholder="Enter student's address"
+                required
+              ></textarea>
+            </td>
+          </tr>
+        </table>
+
+        <div class="submit-btn">
+          <button type="submit">Submit</button>
+        </div>
+        <h2 id="marks"></h2>
+      </form>
+       <div class="go-to-test-btn">
+        <button type="button" onclick="window.location.href='/webapp/test/'">Go to Test Page</button>
+
+      </div>
+    </div>
+  </body>
+</html>

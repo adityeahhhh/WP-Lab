@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promotion Eligibility</title>
+    <script>
+        function checkEligibility() {
+            // Get employee ID from dropdown
+            var employeeId = document.getElementById('employeeId').value;
+            
+            // Get the date of joining from the textbox
+            var dateOfJoining = document.getElementById('dateOfJoining').value;
+            
+            // Ensure a valid date is entered
+            if (dateOfJoining == "") {
+                alert("Please enter the date of joining.");
+                return;
+            }
+            
+            // Get the current date and convert it to a Date object
+            var currentDate = new Date();
+            
+            // Convert the date of joining to a Date object
+            var joinDate = new Date(dateOfJoining);
+            
+            // Calculate the difference in years
+            var experience = currentDate.getFullYear() - joinDate.getFullYear();
+            
+            // Check if the difference in years is greater than 5
+            if (experience > 5) {
+                document.getElementById('eligibilityStatus').innerHTML = "YES";
+            } else {
+                document.getElementById('eligibilityStatus').innerHTML = "NO";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Employee Promotion Eligibility</h2>
+    
+    <form id="eligibilityForm">
+        <label for="employeeId">Employee ID:</label>
+        <select id="employeeId" required>
+            <option value="E123">E123</option>
+            <option value="E124">E124</option>
+            <option value="E125">E125</option>
+            <option value="E126">E126</option>
+        </select>
+        <br><br>
+        
+        <label for="dateOfJoining">Date of Joining:</label>
+        <input type="date" id="dateOfJoining" required>
+        <br><br>
+        
+        <button type="button" onclick="checkEligibility()">Am I Eligible for Promotion?</button>
+    </form>
+    
+    <h3>Eligibility Status: <span id="eligibilityStatus">-</span></h3>
+</body>
+</html>
