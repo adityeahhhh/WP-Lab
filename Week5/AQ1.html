@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Captcha Verification</title>
+    <style>
+        .captcha-box {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            background-color: #f0f0f0;
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #ccc;
+            width: 180px;
+            margin: 20px auto;
+            font-family: Arial, sans-serif;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 200px;
+            margin: 10px auto;
+            display: block;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px auto;
+            display: block;
+        }
+
+        .disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Captcha Verification</h1>
+
+    <div class="captcha-box">
+        cQ4gH
+    </div>
+
+    <form method="POST">
+        {% csrf_token %}
+        <label for="captcha_input">Enter the CAPTCHA: </label>
+        <input type="text" name="captcha_input" id="captcha_input" {% if disabled %}disabled{% endif %}><br><br>
+
+        <button type="submit" {% if disabled %}disabled{% endif %}>Submit</button>
+    </form>
+
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+
+    {% if attempts > 3 %}
+        <p>You have attempted more than 3 times. The input field has been disabled.</p>
+    {% else %}
+        <p>Incorrect attempts: {{ attempts }} of 3.</p>
+    {% endif %}
+
+</body>
+</html>
