@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Messaging App</title>
+    <style>
+        .message-label {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Message Maker</h1>
+
+    <form method="post" id="message-form">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" required><br><br>
+
+        <label for="message">Message:</label>
+        <textarea type="text" name="message" id="message" required></textarea><br><br>
+
+        <label>Text Style:</label><br>
+        <input type="checkbox" name="bold" id="bold" value="bold"> Bold<br>
+        <input type="checkbox" name="italic" id="italic" value="italic"> Italic<br>
+        <input type="checkbox" name="underline" id="underline" value="underline"> Underline<br><br>
+
+        <label>Choose Color:</label><br>
+        <input type="radio" name="color" id="black" value="black" checked> Black
+        <input type="radio" name="color" id="red" value="red"> Red
+        <input type="radio" name="color" id="pink" value="pink"> Pink<br>
+        <input type="radio" name="color" id="blue" value="blue"> Blue
+        <input type="radio" name="color" id="green" value="green"> Green
+        <input type="radio" name="color" id="orange" value="orange"> Orange<br><br>
+
+        <button type="submit">Display Message</button>
+        <button type="button" id="clear-button" onclick="clearForm()">Clear</button>
+    </form>
+
+    {% if name and message %}
+        <h3>Your Message:</h3>
+        <label class="message-label" style="{{ label_style }}" id="message-label">
+            {{ name }}: {{ message }}
+        </label><br><br>
+    {% endif %}
+    <br>
+    <a href="calc">Exit</a>
+
+    <script>
+        function clearForm() {
+            document.getElementById('name').value = '';
+            document.getElementById('message').value = '';
+            document.getElementById('bold').checked = false;
+            document.getElementById('italic').checked = false;
+            document.getElementById('underline').checked = false;
+
+            document.getElementById('black').checked = true;
+
+            document.getElementById('message-label').innerHTML = '';
+        }
+    </script>
+
+</body>
+</html>
