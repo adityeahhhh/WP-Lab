@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Checklist</title>
+</head>
+<body>
+    <h1>Grocery Checklist</h1>
+    <form method="POST" action="{% url 'add_item' %}">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Select</th>
+            </tr>
+            {% for item in grocery_items %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>${{ item.price }}</td>
+                <td><input type="checkbox" name="{{ item.name }}" value="{{ item.name }}"></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <button type="submit">Add Item</button>
+    </form>
+</body>
+</html>
